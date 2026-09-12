@@ -25,13 +25,12 @@ spec:
       - name: backend
 
         # Backend Docker image
-        image: venugopalareddy/resume-ai-backend:1.0
+        image: venugopalareddy/resume-ai-update-backend:1.0
         imagePullPolicy: IfNotPresent
 
         # FastAPI port
         ports:
         - containerPort: 8000
-
         # Environment variables
         env:
         # Get API key from Kubernetes Secret
@@ -44,7 +43,6 @@ spec:
         # Allow frontend to access backend
         - name: CORS_ORIGINS
           value: "http://localhost:5173"
-
         # CPU and memory settings
         resources:
           requests:

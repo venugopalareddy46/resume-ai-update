@@ -25,12 +25,11 @@ spec:
       - name: frontend
 
         # Frontend Docker image
-        image: venugopalareddy/resume-ai-frontend:1.0
+        image: venugopalareddy/resume-ai-update-frontend:1.0
 
         # Nginx port
         ports:
         - containerPort: 80
-
         # CPU and memory settings
         resources:
           requests:
