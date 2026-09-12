@@ -1,0 +1,21 @@
+# Frontend Service
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: resume-ai-frontend
+
+spec:
+  # Connect to frontend Pods
+  selector:
+    app: resume-ai-frontend
+
+  # Frontend service port
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30080
+
+  # Expose frontend outside the cluster
+  type: NodePort

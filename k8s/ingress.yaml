@@ -1,0 +1,47 @@
+# Resume AI Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: resume-ai-ingress
+
+spec:
+  # Use NGINX Ingress Controller
+  ingressClassName: nginx
+
+  # Ingress routing rules
+  rules:
+
+  # ==========================================
+  # FRONTEND
+  # ==========================================
+  - host: resume.venugopalareddy.in
+
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+
+        # Send frontend traffic to frontend Service
+        backend:
+          service:
+            name: resume-ai-frontend
+            port:
+              number: 80
+
+  # ==========================================
+  # BACKEND API
+  # ==========================================
+  - host: api.venugopalareddy.in
+
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+
+        # Send API traffic to backend Service
+        backend:
+          service:
+            name: resume-ai-backend
+            port:
+              number: 8000
