@@ -24,7 +24,6 @@ spec:
 
     # Backend API
     - api.venugopalareddy.in
-
     # Kubernetes Secret containing the TLS certificate
     secretName: resume-ai-tls
 

@@ -31,7 +31,6 @@ spec:
         # FastAPI port
         ports:
         - containerPort: 8000
-
         # Load ConfigMap and Secret
         envFrom:
         # Application configuration
@@ -41,7 +40,6 @@ spec:
         # Sensitive configuration
         - secretRef:
             name: resume-ai-backend-secret
-
         # CPU and memory
         resources:
           requests:
