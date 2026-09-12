@@ -31,19 +31,18 @@ spec:
         # FastAPI port
         ports:
         - containerPort: 8000
-        # Environment variables
-        env:
-        # Get API key from Kubernetes Secret
-        - name: OPENAI_API_KEY
-          valueFrom:
-            secretKeyRef:
-              name: resume-ai-secret
-              key: OPENAI_API_KEY
 
-        # Allow frontend to access backend
-        - name: CORS_ORIGINS
-          value: "http://localhost:5173"
-        # CPU and memory settings
+        # Load ConfigMap and Secret
+        envFrom:
+        # Application configuration
+        - configMapRef:
+            name: resume-ai-backend-config
+
+        # Sensitive configuration
+        - secretRef:
+            name: resume-ai-backend-secret
+
+        # CPU and memory
         resources:
           requests:
             cpu: "100m"
